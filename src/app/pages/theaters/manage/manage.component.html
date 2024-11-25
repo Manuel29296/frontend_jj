@@ -30,7 +30,13 @@
                             </div>
                             <div class="col-8">
                                 <input type="text" id="idField2" class="form-control" [(ngModel)]="theater.location">
-                                
+                                <div
+                                    *ngIf="getTheFormGroup.location.errors && (getTheFormGroup.location.dirty || getTheFormGroup.location.touched || trySend)">
+                                    <strong *ngIf="getTheFormGroup.location.errors.required"
+                                        class="msnError">Requerido</strong>
+                                    <strong *ngIf="getTheFormGroup.location.errors.minlength" class="msnError">Inválido
+                                    </strong>
+                                </div>
                             </div>
                         </div>
 
@@ -40,6 +46,15 @@
                             </div>
                             <div class="col-8">
                                 <input type="number" id="idField2" class="form-control" [(ngModel)]="theater.capacity">
+                            </div>
+                            <div
+                                *ngIf="getTheFormGroup.capacity.errors && (getTheFormGroup.capacity.dirty || getTheFormGroup.capacity.touched || trySend)">
+                                <strong *ngIf="getTheFormGroup.capacity.errors.min" class="msnError">Valor mínimo debe
+                                    ser 1</strong>
+                                <strong *ngIf="getTheFormGroup.capacity.errors.max" class="msnError">Valor máximo 100
+                                </strong>
+                                <strong *ngIf="getTheFormGroup.capacity.errors.required"
+                                    class="msnError">Requerido</strong>
                             </div>
                         </div>
 
